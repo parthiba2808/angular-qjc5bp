@@ -1,0 +1,31 @@
+<div style="margin:auto; width: 70%; margin-top: 30px;">
+  <app-search-bar
+    (onSelectedOption)="onSelectedOption($event)"
+  ></app-search-bar>
+</div>
+<h2 style="text-align:center">Data</h2>
+
+<div *ngFor="let posts of post" class="group">
+  <!-- <p><b>ID :</b>{{ posts.id }}</p> -->
+  <p><b>Building :</b> {{ posts.building }}</p>
+  <p><b>City :</b> {{ posts.city }}</p>
+  <p><b>lat :</b> {{ posts.lat }}</p>
+  <p><b>long :</b> {{ posts.long }}</p>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <ul
+        class="list-inline rating-list"
+        *ngFor="let star of stars"
+        style="display: inline-block"
+      >
+        <li
+          (click)="countStar(star, posts)"
+          [ngClass]="{ selected: star <= posts.rating }"
+        >
+          <i class="fa fa-star"></i>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
